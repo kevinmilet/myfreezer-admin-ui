@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Logo from "../../assets/icons/congelateur.png";
+import Logo from "../../../assets/icons/congelateur.png";
 import "./Sidebar.scss";
 
 const Sidebar = () => {
