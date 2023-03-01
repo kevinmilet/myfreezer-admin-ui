@@ -14,19 +14,19 @@ const Sidebar = () => {
             </div>
           </li>
           <li>
-            <Link to="#">
+            <Link to="/users">
               <i className="fa-solid fa-user"></i>
               <span className="nav-item">Utilisateurs</span>
             </Link>
           </li>
           <li>
-            <Link to="#">
+            <Link to="/types_congelateurs">
               <i className="fa-solid fa-snowflake"></i>
               <span className="nav-item">Congélateur</span>
             </Link>
           </li>
           <li>
-            <Link to="#">
+            <Link to="/types_produits">
               <i className="fa-solid fa-ice-cream"></i>
               <span className="nav-item">Produit</span>
             </Link>
