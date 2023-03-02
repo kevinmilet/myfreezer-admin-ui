@@ -1,9 +1,8 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../../assets/icons/congelateur.png";
-import "./Sidebar.scss";
+import "../../../styles/Sidebar.scss";
 
-const Sidebar = () => {
+const Sidebar = ({ userInfos, setUserInfos }) => {
   return (
     <>
       <nav className="sidebar">

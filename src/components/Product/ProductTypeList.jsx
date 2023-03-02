@@ -23,6 +23,24 @@ const data = [
   },
 ];
 
+const customStyles = {
+  table: {
+    style: {
+      border: "1px solid #4e73df",
+      "border-radius": "2px",
+      "box-shadow":
+        "0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19)",
+    },
+  },
+  headCells: {
+    style: {
+      background: "#4e73df",
+      color: "#FFF",
+      "font-weight": "700",
+    },
+  },
+};
+
 export const ProductTypeList = () => {
   const columns = [
     {
@@ -34,9 +52,12 @@ export const ProductTypeList = () => {
       selector: (row) => row.name,
     },
   ];
+
   return (
     <>
-      <DataTable columns={columns} data={data} />
+      <div style={{ width: "500px" }}>
+        <DataTable columns={columns} data={data} customStyles={customStyles} />
+      </div>
     </>
   );
 };
