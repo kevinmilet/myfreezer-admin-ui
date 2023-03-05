@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
-import Sidebar from "./components/navigation/sidebar/Sidebar";
-import { FreezerTypeView } from "./views/FreezerTypeView";
-import { UserView } from "./views/UserView";
-import { ProductTypeView } from "./views/ProductTypeView";
-import styled from "styled-components";
-import { Login } from "components/User/Login";
-import axios from "axios";
-import Loader from "tools/Loader";
+import React, { useEffect, useState } from 'react';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import Sidebar from './components/navigation/sidebar/Sidebar';
+import { FreezerTypeView } from './views/FreezerTypeView';
+import { UserView } from './views/UserView';
+import { ProductTypeView } from './views/ProductTypeView';
+import styled from 'styled-components';
+import { Login } from 'components/User/Login';
+import axios from 'axios';
+import Loader from 'tools/Loader';
 
 // @ts-ignore
 const Main = styled.div`
-  margin: 15px;
+  margin: 15px auto;
 `;
 
-export const AUTH_TOKEN_KEY = "jhi-authentificationToken";
+export const AUTH_TOKEN_KEY = 'jhi-authentificationToken';
 
 const UserConnected = ({ userInfos, setUserInfos }) => {
   const history = useNavigate();
@@ -22,13 +22,13 @@ const UserConnected = ({ userInfos, setUserInfos }) => {
 
   useEffect(() => {
     setUserInfos(null);
-    axios.get("/isConnected").then(
+    axios.get('/isConnected').then(
       (response) => {
         setUserInfos(response.data);
       },
       () => {
-        if (location.pathname !== "/") {
-          history("/login");
+        if (location.pathname !== '/') {
+          history('/login');
         }
       }
     );

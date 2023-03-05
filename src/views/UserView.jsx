@@ -1,7 +1,8 @@
-import React from "react";
-import { UserList } from "../components/User/UserList";
-import { Title } from "tools/GlobalComponents";
-import styled from "styled-components";
+import React from 'react';
+import UserList from '../components/User/UserList';
+import { Title } from 'tools/GlobalComponents';
+import styled from 'styled-components';
+import UserDetails from 'components/User/UserDetails';
 
 // @ts-ignore
 const GridContainer = styled.div`
@@ -20,7 +21,9 @@ export const UserView = () => {
         <div>
           <UserList />
         </div>
-        <div>Admin users panel</div>
+        <div>
+          <UserDetails />
+        </div>
       </GridContainer>
     </>
   );

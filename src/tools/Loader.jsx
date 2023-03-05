@@ -1,5 +1,6 @@
-import React from "react";
-import loader from "../assets/icons/loader.svg";
+import React from 'react';
+// @ts-ignore
+import loader from '../assets/icons/loader.svg';
 
 const Loader = () => {
   return (

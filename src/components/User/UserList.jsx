@@ -1,23 +1,24 @@
-import axios from "axios";
-import dayjs from "dayjs";
-import React, { useEffect, useState } from "react";
-import DataTable from "react-data-table-component";
-import styled from "styled-components";
+import axios from 'axios';
+import dayjs from 'dayjs';
+import React, { useEffect, useState } from 'react';
+import DataTable from 'react-data-table-component';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const customStyles = {
   table: {
     style: {
-      border: "1px solid #4e73df",
-      "border-radius": "2px",
-      "box-shadow":
-        "0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19)",
+      border: '1px solid #4e73df',
+      'border-radius': '2px',
+      'box-shadow':
+        '0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19)',
     },
   },
   headCells: {
     style: {
-      background: "#4e73df",
-      color: "#FFF",
-      "font-weight": "700",
+      background: '#4e73df',
+      color: '#FFF',
+      'font-weight': '700',
     },
   },
 };
@@ -40,27 +41,27 @@ const False = styled.div`
 
 const columns = [
   {
-    name: "ID",
+    name: 'ID',
     selector: (row) => row.id,
   },
   {
-    name: "Nom",
+    name: 'Nom',
     selector: (row) => row.lastname,
   },
   {
-    name: "Prénom",
+    name: 'Prénom',
     selector: (row) => row.firstname,
   },
   {
-    name: "Email",
+    name: 'Email',
     selector: (row) => row.email,
   },
   {
     name: "Date d'inscription",
-    selector: (row) => dayjs(row.created_at).locale("fr").format("DD/MM/YYYY"),
+    selector: (row) => dayjs(row.created_at).locale('fr').format('DD/MM/YYYY'),
   },
   {
-    name: "Compte actif",
+    name: 'Compte actif',
     selector: (row) => {
       if (row.isActive) {
         return <True />;
@@ -70,7 +71,7 @@ const columns = [
     },
   },
   {
-    name: "Rôle admin",
+    name: 'Rôle admin',
     selector: (row) => {
       if (row.isAdmin) {
         return <True />;
@@ -82,21 +83,20 @@ const columns = [
 ];
 
 const paginationComponentOptions = {
-  rowsPerPageText: "Par page",
-  rangeSeparatorText: "sur",
+  rowsPerPageText: 'Par page',
+  rangeSeparatorText: 'sur',
   selectAllRowsItem: true,
-  selectAllRowsItemText: "Tous",
+  selectAllRowsItemText: 'Tous',
 };
 
-export const UserList = () => {
+const UserList = () => {
   const [usersData, setUsersData] = useState([]);
   const [selectedRows, setSelectedRows] = useState(false);
 
   const [loading, setLoading] = useState(true);
 
   const fetchUsers = () => {
-    axios.get("/users").then((res) => {
-      console.log(res.data);
+    axios.get('/users').then((res) => {
       setUsersData(res.data);
     });
   };
@@ -108,12 +108,12 @@ export const UserList = () => {
 
   const handleChange = ({ selectedRows }) => {
     // You can set state or dispatch with something like Redux so we can use the retrieved data
-    console.log("Selected Rows: ", selectedRows);
+    console.log('Selected Rows: ', selectedRows);
     setSelectedRows(selectedRows);
   };
 
   const handleClick = (row) => {
-    console.log("Selected Row id: ", row);
+    console.log('Selected Row id: ', row);
   };
   return (
     <>
@@ -123,7 +123,7 @@ export const UserList = () => {
         </div>
       ) : (
         <>
-          <div style={{ width: "950px" }}>
+          <div style={{ width: '950px' }}>
             <DataTable
               columns={columns}
               data={usersData}
@@ -142,3 +142,25 @@ export const UserList = () => {
     </>
   );
 };
+
+UserList.propTypes = {
+  id: PropTypes.number.isRequired,
+  firstname: PropTypes.string.isRequired,
+  lastname: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  created_at: PropTypes.string.isRequired,
+  isAdmin: PropTypes.bool.isRequired,
+  isActive: PropTypes.bool.isRequired,
+};
+
+UserList.defaultProps = {
+  id: undefined,
+  firstname: '',
+  lastname: '',
+  email: '',
+  created_at: '',
+  isAdmin: false,
+  isActive: false,
+};
+
+export default UserList;

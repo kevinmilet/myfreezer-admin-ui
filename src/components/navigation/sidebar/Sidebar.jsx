@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
-import Logo from "../../../assets/icons/congelateur.png";
-import "../../../styles/Sidebar.scss";
+import { Link } from 'react-router-dom';
+import '../../../styles/Sidebar.scss';
+// @ts-ignore
+import logo from '../../../assets/icons/congelateur.png';
 
 const Sidebar = ({ userInfos, setUserInfos }) => {
   return (
@@ -9,7 +10,7 @@ const Sidebar = ({ userInfos, setUserInfos }) => {
         <ul>
           <li>
             <div className="logo">
-              <img src={Logo} alt="Logo" />
+              <img src={logo} alt="Logo" />
             </div>
           </li>
           <li>
